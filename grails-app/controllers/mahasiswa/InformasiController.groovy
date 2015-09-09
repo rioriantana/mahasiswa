@@ -49,6 +49,9 @@ class InformasiController {
     def edit(Informasi informasiInstance) {
         respond informasiInstance
     }
+    def laporan(){
+        
+    }
 
     @Transactional
     def update(Informasi informasiInstance) {
