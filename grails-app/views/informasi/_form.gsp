@@ -43,7 +43,7 @@
 		<g:message code="informasi.cuti.label" default="Cuti" />
 		
 	</label>
-	<g:textField name="cuti" value="${informasiInstance?.cuti}"/>
+	<g:field type="number" name="cuti" value="${informasiInstance?.cuti}"/> Semester
 
 </div>
 
@@ -52,7 +52,7 @@
 		<g:message code="informasi.lamaStudi.label" default="Lama Studi" />
 		
 	</label>
-	<g:textField name="lamaStudi" value="${informasiInstance?.lamaStudi}"/>
+	<g:field type="number" name="lamaStudi" value="${informasiInstance?.lamaStudi}"/> Semester
 
 </div>
 
@@ -61,7 +61,7 @@
 		<g:message code="informasi.ipk.label" default="Ipk" />
 		
 	</label>
-	<g:textField name="ipk" value="${informasiInstance?.ipk}"/>
+	<g:field type="number" max="4" min="0" step="0.01" name="ipk" value="${informasiInstance?.ipk}"/>
 
 </div>
 
@@ -97,7 +97,7 @@
 		<g:message code="informasi.judulSkripsi.label" default="Judul Skripsi" />
 		
 	</label>
-	<g:textField name="judulSkripsi" value="${informasiInstance?.judulSkripsi}"/>
+	<g:textArea rows="5" cols="5" name="judulSkripsi" value="${informasiInstance?.judulSkripsi}"/>
 
 </div>
 
@@ -106,7 +106,7 @@
 		<g:message code="informasi.lamaSkripsi.label" default="Lama Skripsi" />
 		
 	</label>
-	<g:textField name="lamaSkripsi" value="${informasiInstance?.lamaSkripsi}"/>
+	<g:field type="number" name="lamaSkripsi" value="${informasiInstance?.lamaSkripsi}"/> Bulan
 
 </div>
 
@@ -124,7 +124,7 @@
 		<g:message code="informasi.tahunLulusSMA.label" default="Tahun Lulus SMA" />
 		
 	</label>
-	<g:textField name="tahunLulusSMA" value="${informasiInstance?.tahunLulusSMA}"/>
+	<g:field type="number" name="tahunLulusSMA" value="${informasiInstance?.tahunLulusSMA}"/>
 
 </div>
 
@@ -142,7 +142,7 @@
 		<g:message code="informasi.jenisKelamin.label" default="Jenis Kelamin" />
 		
 	</label>
-	<g:textField name="jenisKelamin" value="${informasiInstance?.jenisKelamin}"/>
+	<g:select name="jenisKelamin" from="${informasiInstance.constraints.jenisKelamin.inList}" value="${informasiInstance?.jenisKelamin}" valueMessagePrefix="informasi.jenisKelamin"/>
 
 </div>
 
@@ -151,7 +151,7 @@
 		<g:message code="informasi.wargaNegara.label" default="Warga Negara" />
 		
 	</label>
-	<g:textField name="wargaNegara" value="${informasiInstance?.wargaNegara}"/>
+	<g:select name="wargaNegara" from="${informasiInstance.constraints.wargaNegara.inList}" value="${informasiInstance?.wargaNegara}" valueMessagePrefix="informasi.wargaNegara"/>
 
 </div>
 
@@ -169,7 +169,7 @@
 		<g:message code="informasi.email.label" default="Email" />
 		
 	</label>
-	<g:textField name="email" value="${informasiInstance?.email}"/>
+	<g:field type="email" name="email" value="${informasiInstance?.email}"/>
 
 </div>
 
