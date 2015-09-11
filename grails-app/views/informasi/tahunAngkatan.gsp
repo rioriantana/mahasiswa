@@ -15,12 +15,14 @@
 			</ul>
 		</div>
 		<div id="list-informasi" class="content scaffold-list" role="main">
-			<h1>Cek Laporan Data Mahasiswa Lulus Berdasarkan : </h1>
-			<ol>
-				<li><g:link action="" >Tahun Angkatan</g:link></li>
-				<li><g:link action="" >Tahun Akademik</g:link></li>
-				<li><g:link action="" >Tahun Berjalan</g:link></li>
-			</ol>
+			<h1>Detile Mahasiswa Lulus Berdasarkan Bulan</h1>
+			<g:form url="[resource:informasiInstance, action:'tahunAngkatan']" >
+				<fieldset class="form">
+					<strong>Bulan : </strong>
+					<g:render template="tanggalan"/>
+					<g:submitButton name="cek" class="save" value="Buka" />
+				</fieldset>
+			</g:form>
 			
 		</div>
 	</body>

@@ -58,7 +58,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: informasiInstance, field: 'ipk', 'error')} ">
 	<label for="ipk">
-		<g:message code="informasi.ipk.label" default="Ipk" />
+		<g:message code="informasi.ipk.label" default="IPK" />
 		
 	</label>
 	<g:field type="number" max="4" min="0" step="0.01" name="ipk" value="${informasiInstance?.ipk}"/>

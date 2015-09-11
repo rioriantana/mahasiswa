@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>My site</title>
+<title>Sistem Informasi Kelulusan Mahasiswa Fisika</title>
 <link rel="stylesheet" type="text/css" href="${request.contextPath}/template/demo.css" />
 <link rel="stylesheet" href="${request.contextPath}/template/menu.css" type="text/css" media="screen" />
 <!--[if IE 6]>

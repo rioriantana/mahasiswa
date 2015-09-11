@@ -104,4 +104,14 @@ class InformasiController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def tahunAngkatan(){
+
+    }
+    def tahunAkademik(){
+        
+    }
+    def tahunBerjalan(){
+        
+    }
 }
