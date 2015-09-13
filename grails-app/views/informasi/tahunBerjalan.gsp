@@ -14,10 +14,10 @@
 			</ul>
 		</div>
 		<div id="list-informasi" class="content scaffold-list" role="main">
-			<h1>Detile Mahasiswa Lulus Berdasarkan Tahun Angkatan</h1>
-			<g:form url="[resource:informasiInstance, action:'tahunAngkatan']" >
+			<h1>Detile Mahasiswa Lulus Berdasarkan Tahun Kelulusan</h1>
+			<g:form url="[resource:informasiInstance, action:'tahunBerjalan']" >
 				<fieldset class="form">
-					<strong>Tahun Angkatan : </strong>
+					<strong>Tahun Kelulusan : </strong>
 					<g:datePicker name="tahunAngkatan" precision="year" value="${new Date()}" default="none"  relativeYears="[-10..10]" default="${new Date()}" />
 					<g:submitButton name="cek" class="save" value="Buka" />
 				</fieldset>

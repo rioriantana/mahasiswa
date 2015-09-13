@@ -65,14 +65,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: informasiInstance, field: 'predikatLulus', 'error')} ">
-	<label for="predikatLulus">
-		<g:message code="informasi.predikatLulus.label" default="Predikat Lulus" />
-		
-	</label>
-	<g:textField name="predikatLulus" value="${informasiInstance?.predikatLulus}"/>
-
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: informasiInstance, field: 'pembimbing1', 'error')} ">
 	<label for="pembimbing1">

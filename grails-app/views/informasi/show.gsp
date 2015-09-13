@@ -63,7 +63,7 @@
 				<li class="fieldcontain">
 					<span id="cuti-label" class="property-label"><g:message code="informasi.cuti.label" default="Cuti" /></span>
 					
-						<span class="property-value" aria-labelledby="cuti-label"><g:fieldValue bean="${informasiInstance}" field="cuti"/></span>
+						<span class="property-value" aria-labelledby="cuti-label"><g:fieldValue bean="${informasiInstance}" field="cuti"/> Semester</span>
 					
 				</li>
 				</g:if>
@@ -72,7 +72,7 @@
 				<li class="fieldcontain">
 					<span id="lamaStudi-label" class="property-label"><g:message code="informasi.lamaStudi.label" default="Lama Studi" /></span>
 					
-						<span class="property-value" aria-labelledby="lamaStudi-label"><g:fieldValue bean="${informasiInstance}" field="lamaStudi"/></span>
+						<span class="property-value" aria-labelledby="lamaStudi-label"><g:fieldValue bean="${informasiInstance}" field="lamaStudi"/> Semester</span>
 					
 				</li>
 				</g:if>
@@ -126,7 +126,7 @@
 				<li class="fieldcontain">
 					<span id="lamaSkripsi-label" class="property-label"><g:message code="informasi.lamaSkripsi.label" default="Lama Skripsi" /></span>
 					
-						<span class="property-value" aria-labelledby="lamaSkripsi-label"><g:fieldValue bean="${informasiInstance}" field="lamaSkripsi"/></span>
+						<span class="property-value" aria-labelledby="lamaSkripsi-label"><g:fieldValue bean="${informasiInstance}" field="lamaSkripsi"/> Bulan</span>
 					
 				</li>
 				</g:if>

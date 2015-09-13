@@ -46,9 +46,9 @@
 					
 						<td>${fieldValue(bean: informasiInstance, field: "nama")}</td>
 					
-						<td><g:formatDate date="${informasiInstance.tanggalMasuk}" /></td>
+						<td><g:formatDate format="dd-MM-yyyy" date="${informasiInstance.tanggalMasuk}" /></td>
 					
-						<td><g:formatDate date="${informasiInstance.tanggalLulus}" /></td>
+						<td><g:formatDate format="dd-MM-yyyy" date="${informasiInstance.tanggalLulus}" /></td>
 					
 						<td>${fieldValue(bean: informasiInstance, field: "cuti")}</td>
 					
