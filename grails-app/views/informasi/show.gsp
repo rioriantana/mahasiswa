@@ -12,12 +12,11 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="print" id="${informasiInstance.id}">Cetak</g:link></li>
 			</ul>
 		</div>
 		<div id="show-informasi" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h1>Anda Terdaftar Dengan Informasi Sebagai Berikut :</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -45,7 +44,7 @@
 				<li class="fieldcontain">
 					<span id="tanggalMasuk-label" class="property-label"><g:message code="informasi.tanggalMasuk.label" default="Tanggal Masuk" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalMasuk-label"><g:formatDate date="${informasiInstance?.tanggalMasuk}" /></span>
+						<span class="property-value" aria-labelledby="tanggalMasuk-label"><g:formatDate format="dd-MM-yyyy" date="${informasiInstance?.tanggalMasuk}" /></span>
 					
 				</li>
 				</g:if>
@@ -54,7 +53,7 @@
 				<li class="fieldcontain">
 					<span id="tanggalLulus-label" class="property-label"><g:message code="informasi.tanggalLulus.label" default="Tanggal Lulus" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalLulus-label"><g:formatDate date="${informasiInstance?.tanggalLulus}" /></span>
+						<span class="property-value" aria-labelledby="tanggalLulus-label"><g:formatDate format="dd-MM-yyyy" date="${informasiInstance?.tanggalLulus}" /></span>
 					
 				</li>
 				</g:if>
@@ -72,7 +71,7 @@
 				<li class="fieldcontain">
 					<span id="lamaStudi-label" class="property-label"><g:message code="informasi.lamaStudi.label" default="Lama Studi" /></span>
 					
-						<span class="property-value" aria-labelledby="lamaStudi-label"><g:fieldValue bean="${informasiInstance}" field="lamaStudi"/> Semester</span>
+						<span class="property-value" aria-labelledby="lamaStudi-label"><g:fieldValue bean="${informasiInstance}" field="lamaStudi"/> Bulan</span>
 					
 				</li>
 				</g:if>
@@ -256,12 +255,23 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${informasiInstance?.avatar}">
+				<li class="fieldcontain">
+					<span id="avatar-label" class="property-label">Foto</span>
+					
+						<span class="property-value" aria-labelledby="avatar-label">
+						<img class="avatar" width="100px" src="${createLink(controller:'informasi', action:'avatar_image', id:informasiInstance.id)}" />
+						</span>
+					
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form url="[resource:informasiInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${informasiInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit class="delete" action="delete" value="Delete" onclick="return confirm('Are you sure?');"/>
 				</fieldset>
 			</g:form>
 		</div>

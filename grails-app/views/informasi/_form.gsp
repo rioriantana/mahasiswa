@@ -47,14 +47,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: informasiInstance, field: 'lamaStudi', 'error')} ">
-	<label for="lamaStudi">
-		<g:message code="informasi.lamaStudi.label" default="Lama Studi" />
-		
-	</label>
-	<g:field type="number" name="lamaStudi" value="${informasiInstance?.lamaStudi}"/> Semester
-
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: informasiInstance, field: 'ipk', 'error')} ">
 	<label for="ipk">

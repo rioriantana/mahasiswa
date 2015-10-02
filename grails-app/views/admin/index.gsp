@@ -24,7 +24,16 @@ body {behavior: url("csshover3.htc");}
   <ul id="menu2">
     <li><a href="${createLink(uri: '/')}" >Home</a></li>
     <!-- End Home Item -->
-    <li><g:link class="create" action="create" controller="informasi">Input Data Wisuda</g:link>
+    <li><g:link class="create" action="index" controller="informasi">Data Wisuda</g:link>
+    </li>
+    <!-- End 5 columns Item -->
+    <li><g:link class="create" action="tahunBerjalan" controller="informasi">Rekap Tahun Berjalan</g:link>
+      <!-- End 4 columns container -->
+    </li>
+    <!-- End 4 columns Item -->
+    <li><g:link class="create" action="tahunAngkatan" controller="informasi">Rekap Tahun Angkatan</g:link>
+    </li>
+    <li><g:link class="create" action="tahunAkademik" controller="informasi">Rekap Tahun Akademik</g:link>
     </li>
     <!-- End 3 columns Item -->
   </ul>

@@ -9,6 +9,19 @@ import grails.transaction.Transactional
 class InformasiController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    private static final okcontents = ['image/png', 'image/jpeg', 'image/gif']
+    def avatar_image() {
+        def avatarUser = Informasi.get(params.id)
+        if (!avatarUser) {
+            render "OK"
+        } else {
+            response.contentType = avatarUser.avatarType
+            response.contentLength = avatarUser.avatar.size()
+            OutputStream out = response.outputStream
+            out.write(avatarUser.avatar)
+            out.close()
+        }
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -48,6 +61,17 @@ class InformasiController {
         else{
             informasiInstance.predikatLulus = "Cumlaude"
         }
+
+
+         def f = request.getFile('avatar')
+        def masuk = params.tanggalMasuk
+        def keluar = params.tanggalLulus
+        def lama = (keluar - masuk)/30
+        if (okcontents.contains(f.getContentType())) {
+        informasiInstance.avatar = f.bytes
+        informasiInstance.avatarType = f.contentType 
+    }
+        informasiInstance.lamaStudi = Math.ceil(lama)
         informasiInstance.save flush:true
 
         request.withFormat {
@@ -78,6 +102,16 @@ class InformasiController {
             return
         }
 
+
+        def masuk = params.tanggalMasuk
+        def keluar = params.tanggalLulus
+        def lama = (keluar - masuk)/30
+        informasiInstance.lamaStudi = Math.ceil(lama)
+        def f = request.getFile('avatar')
+        if (okcontents.contains(f.getContentType())) {
+        informasiInstance.avatar = f.getBytes()
+        informasiInstance.avatarType = f.contentType 
+        }
         informasiInstance.save flush:true
 
         request.withFormat {
@@ -138,9 +172,11 @@ class InformasiController {
         def tanggalAkhir = params.tanggalAkhir + 30
         def informasiInstance = Informasi.findAllByTanggalLulusBetween(tanggalAwal, tanggalAkhir)
         def informasiInstanceCount = Informasi.countByTanggalLulusBetween(tanggalAwal, tanggalAkhir)
-        def rataRata = Informasi.executeQuery("select avg(ipk) from Informasi as i where i.tanggalLulus between :awal and :akhir ", [awal: tanggalAwal, akhir: tanggalAkhir])
-        def rataJoin = rataRata.join(", ")
-        render(controller: this, template: "tahunAngkatan", model: [informasiInstance: informasiInstance, informasiInstanceCount: informasiInstanceCount, tanggalAwal: tanggalAwal, tanggalAkhir: tanggalAkhir, rataJoin: rataJoin])
+        def a = Informasi.where{ between("tanggalLulus", tanggalAwal, tanggalAkhir)}
+        def lamaStudi = a.get{projections{avg "lamaStudi"}}
+        def ipk = a.get{projections{avg "ipk"}}
+        def lamaSkripsi = a.get{projections{avg "lamaSkripsi"}}
+        render(controller: this, template: "tahunAkademik", model: [informasiInstance: informasiInstance, informasiInstanceCount: informasiInstanceCount, tanggalAwal: tanggalAwal, tanggalAkhir: tanggalAkhir, lamaStudi: lamaStudi, ipk: ipk, lamaSkripsi: lamaSkripsi])
     }
     def tahunBerjalan(){
         if(!params.tahunAngkatan){

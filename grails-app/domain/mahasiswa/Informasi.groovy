@@ -27,6 +27,8 @@ class Informasi {
 	String namaOrangTua
 	String pekerjaanOrangTua
 	String alamatOrangTua
+	byte[] avatar
+  	String avatarType
     static constraints = {
     	nim(nullable: true)
 		nama(nullable: true)
@@ -54,5 +56,7 @@ class Informasi {
 		namaOrangTua(nullable: true)
 		pekerjaanOrangTua(nullable: true)
 		alamatOrangTua(nullable: true)
+		avatar(nullable:true, maxSize: 102400)
+		avatarType(nullable:true)
     }
 }

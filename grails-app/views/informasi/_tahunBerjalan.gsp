@@ -54,7 +54,7 @@ Tahun Kelulusan <g:formatDate format="yyyy" date="${tahunAngkatan}"/></center></
             <td>${i+1}</td>
             <td >${informasi?.nim}</td>
             <td class="center">${informasi?.nama}</td>
-            <td class="center">${informasi?.lamaStudi} Semester</td>
+            <td class="center">${informasi?.lamaStudi} Bulan</td>
             <td ><g:formatDate format="dd-MM-yyyy" date="${informasi?.tanggalMasuk}"/></td>
 			<td ><g:formatDate format="dd-MM-yyyy" date="${informasi?.tanggalLulus}"/></td>
 			<td >${informasi?.predikatLulus}</td>
