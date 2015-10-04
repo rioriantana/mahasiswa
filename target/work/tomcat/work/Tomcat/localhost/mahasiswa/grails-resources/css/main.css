@@ -36,6 +36,11 @@ html * {
 	margin: 0;
 }
 
+.cari{
+	margin-left: 25px;
+	margin-bottom: 10px;
+}
+
 body {
 	background: #ffffff;
 	color: #333333;

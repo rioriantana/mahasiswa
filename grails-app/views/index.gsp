@@ -98,9 +98,5 @@ body {behavior: url("csshover3.htc");}
     </div>
   </div>
 </div>
-<div id="fotlinks6">
-  <div align="center">Copyright 2010 Your Website<br />
-Thanks to <a href="http://www.makarska-rivijeraapartment.com/">Croatia Makarska Riviera</a></div>
-</div>
 </body>
 </html>

@@ -12,11 +12,16 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create">Tambah Wisuda</g:link></li>
 			</ul>
 		</div>
 		<div id="list-informasi" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<h1>Daftar Mahasiswa Wisuda</h1>
+			<div class="cari">
+			<g:form url="[action:'index']"  enctype="multipart/form-data">
+				<input type="text" name='nim' id='nim' placeholder="NIM Mahasiswa">
+				<input type="submit" value="Cari" name="cari">
+			</g:form></div>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -52,7 +57,7 @@
 					
 						<td>${fieldValue(bean: informasiInstance, field: "cuti")}</td>
 					
-						<td>${fieldValue(bean: informasiInstance, field: "lamaStudi")}</td>
+						<td>${fieldValue(bean: informasiInstance, field: "lamaStudi")} Bulan</td>
 					
 					</tr>
 				</g:each>

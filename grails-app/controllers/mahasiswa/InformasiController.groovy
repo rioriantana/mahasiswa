@@ -23,9 +23,22 @@ class InformasiController {
         }
     }
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Informasi.list(params), model:[informasiInstanceCount: Informasi.count()]
+    def index() {
+        params.max = Math.min(params.max ? params.init('max'): 10, 100)
+        def informasi = []
+        def informasiCount = []
+        if(!params.cari){
+            informasi = Informasi.list(params)
+            informasiCount = Informasi.count()
+        }
+        else{
+            def cari = "%"+params.nim+"%"
+            cari = cari.toUpperCase()
+            informasi = Informasi.executeQuery("from Informasi as i where upper(i.nim) like :cari", [cari: cari])   
+            informasiCount = Informasi.executeQuery("select count(*) from Informasi as i where upper(i.nim) like :cari", [cari: cari])
+            print cari
+        }
+        [informasiInstanceList: informasi , informasiInstanceCount: informasiCount]
     }
 
     def show(Informasi informasiInstance) {
@@ -160,9 +173,11 @@ class InformasiController {
         def tahunAngkatans = tahunAngkatan + 365
         def informasiInstance = Informasi.findAllByTanggalMasukBetween(tahunAngkatan, tahunAngkatans)
         def informasiInstanceCount = Informasi.countByTanggalMasukBetween(tahunAngkatan, tahunAngkatans)
-        def rataRata = Informasi.executeQuery("select avg(ipk) from Informasi as i where i.tanggalMasuk between :awal and :akhir ", [awal: tahunAngkatan, akhir: tahunAngkatans])
-        def rataJoin = rataRata.join(", ")
-        render(controller: this, template: "tahunAngkatan", model: [informasiInstance: informasiInstance, informasiInstanceCount: informasiInstanceCount, tahunAngkatan: tahunAngkatan, rataJoin: rataJoin])
+       def a = Informasi.where{ between("tanggalMasuk", tahunAngkatan, tahunAngkatans)}
+        def lamaStudi = a.get{projections{avg "lamaStudi"}}
+        def ipk = a.get{projections{avg "ipk"}}
+        def lamaSkripsi = a.get{projections{avg "lamaSkripsi"}}
+        render(controller: this, template: "tahunAngkatan", model: [informasiInstance: informasiInstance, informasiInstanceCount: informasiInstanceCount, tahunAngkatan: tahunAngkatan, lamaStudi: lamaStudi, ipk: ipk, lamaSkripsi: lamaSkripsi])
     }
     def tahunAkademik(){
         if(!params.tanggalAwal && !params.tanggalAkhir){
@@ -186,8 +201,10 @@ class InformasiController {
         def tahunAngkatans = tahunAngkatan + 365
         def informasiInstance = Informasi.findAllByTanggalLulusBetween(tahunAngkatan, tahunAngkatans)
         def informasiInstanceCount = Informasi.countByTanggalLulusBetween(tahunAngkatan, tahunAngkatans)
-        def rataRata = Informasi.executeQuery("select avg(ipk) from Informasi as i where i.tanggalLulus between :awal and :akhir ", [awal: tahunAngkatan, akhir: tahunAngkatans])
-        def rataJoin = rataRata.join(", ")
-        render(controller: this, template: "tahunBerjalan", model: [informasiInstance: informasiInstance, informasiInstanceCount: informasiInstanceCount, tahunAngkatan: tahunAngkatan, rataJoin: rataJoin])
+        def a = Informasi.where{ between("tanggalLulus", tahunAngkatan, tahunAngkatans)}
+        def lamaStudi = a.get{projections{avg "lamaStudi"}}
+        def ipk = a.get{projections{avg "ipk"}}
+        def lamaSkripsi = a.get{projections{avg "lamaSkripsi"}}
+        render(controller: this, template: "tahunBerjalan", model: [informasiInstance: informasiInstance, informasiInstanceCount: informasiInstanceCount, tahunAngkatan: tahunAngkatan, lamaStudi: lamaStudi, ipk: ipk, lamaSkripsi: lamaSkripsi])
     }
 }
