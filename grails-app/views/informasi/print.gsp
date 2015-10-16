@@ -58,6 +58,9 @@
     }
 
 </style>
+<script type="text/javascript">
+	window.print();
+</script>
 </head>
 <body>
 <div class="sejajar kop1">DATA DIRI WISUDA PROGRAM STUDI FISIKA</div>

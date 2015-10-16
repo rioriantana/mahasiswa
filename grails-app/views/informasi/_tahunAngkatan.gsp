@@ -29,6 +29,9 @@
     }
 
 </style>
+<script type="text/javascript">
+    window.print();
+</script>
 </head>
 <body>
 <h3><center>Data Wisuda Jurusan Fisika FMIPA UNS<br>
